@@ -7,6 +7,7 @@ import Button from "@material-ui/core/Button";
 import { BookTableRowProps } from "../../../types";
 import api from "../../../api";
 import Photo from "../Photo";
+import "./TableRows.css";
 
 function TableRows(props: BookTableRowProps) {
   const { bookId, borrowDate, returnDate, handleReturnBook } = props;

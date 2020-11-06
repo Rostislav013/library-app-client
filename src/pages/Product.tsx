@@ -65,7 +65,7 @@ export default function BookPage() {
           <CardMedia
             className={classes.media}
             image={require("../Images/book.jpg")}
-            title="Contemplative Reptile"
+            title="book image"
           />
           <CardContent className={classes.bookCardContent}>
             <Typography

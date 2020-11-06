@@ -4,8 +4,8 @@ import TableBody from "@material-ui/core/TableBody";
 
 import MemoizedTableHeader from "../TableHeader";
 import TableRows from "../TableRow";
-
 import { UserProps } from "../../types";
+import "./userTable.css";
 
 const UserTable = (props: UserProps) => {
   const { users, handleDeleteUser } = props;

@@ -6,6 +6,7 @@ import TableBody from "@material-ui/core/TableBody";
 import MemoizedTableHeader from "../TableHeader";
 import { BookProps } from "../../../types";
 import TableRows from "../TableRow";
+import "./bookTable.css";
 
 const BookTable = (props: BookProps) => {
   const { books, handleReturnBook } = props;
