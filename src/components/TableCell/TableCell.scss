@@ -1,0 +1,16 @@
+.cell {
+  cursor: default;
+}
+
+.cell:active {
+  color: blue;
+  border-bottom: 1px solid blue;
+}
+.cell:hover {
+  color: blue;
+  cursor: pointer;
+}
+
+.arrow {
+  visibility: hidden;
+}
