@@ -1,15 +1,15 @@
-import React from 'react'
-import { Switch, Route } from 'react-router-dom'
+import React from "react";
+import { Switch, Route } from "react-router-dom";
 
-import About from '../pages/About'
-import Home from '../pages/Home'
-import Product from '../pages/Product'
-import Login from '../pages/Login'
-import Dashboard from '../pages/Dashboard'
-import Register from '../pages/Register'
-import ShoppingCart from '../pages/ShoppingCart'
-import EditBook from '../pages/EditBook'
-import EditUser from '../pages/EditUser'
+import About from "../pages/About";
+import Home from "../pages/Home";
+import Product from "../pages/Product";
+import Login from "../pages/Login";
+import Dashboard from "../pages/Dashboard";
+import Register from "../pages/Register";
+import ShoppingCart from "../pages/ShoppingCart";
+import EditBook from "../pages/EditBook";
+import EditUser from "../pages/EditUser";
 
 const Routes = () => (
   <Switch>
@@ -23,6 +23,6 @@ const Routes = () => (
     <Route exact path="/users/:id" component={EditUser} />
     <Route exact path="/about" component={About} />
   </Switch>
-)
+);
 
-export default Routes
+export default Routes;
