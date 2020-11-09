@@ -68,7 +68,6 @@ function EditBook() {
     enableReinitialize: true,
     validationSchema: BookValidationSchema,
     onSubmit: async (values) => {
-      alert(JSON.stringify(values, null, 2));
       try {
         await api.updateBookById(book?._id, values);
       } catch (err) {

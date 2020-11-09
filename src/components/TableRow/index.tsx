@@ -7,6 +7,7 @@ import DeleteIcon from "@material-ui/icons/Delete";
 
 import { TableRowProps } from "../../types";
 import Photo from "../UserPhoto";
+import "./TableRows.css";
 
 function TableRows(props: TableRowProps) {
   const {

@@ -1,12 +1,12 @@
-import React from 'react'
-import FormControlLabel from '@material-ui/core/FormControlLabel'
-import Checkbox from '@material-ui/core/Checkbox'
-import Button from '@material-ui/core/Button'
-import TextField from '@material-ui/core/TextField'
-import Grid from '@material-ui/core/Grid'
+import React from "react";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Checkbox from "@material-ui/core/Checkbox";
+import Button from "@material-ui/core/Button";
+import TextField from "@material-ui/core/TextField";
+import Grid from "@material-ui/core/Grid";
 
-import { useStyles } from '../../hooks/useStyles'
-import { SearchBookProps } from '../../types'
+import { useStyles } from "../../hooks/useStyles";
+import { SearchBookProps } from "../../types";
 
 function SearchBook(props: SearchBookProps) {
   const {
@@ -18,8 +18,8 @@ function SearchBook(props: SearchBookProps) {
     handleChangeAuthor,
     handleSubmit,
     handleChangeTitle,
-  } = props
-  const classes = useStyles()
+  } = props;
+  const classes = useStyles();
 
   return (
     <div className={classes.searchBookContainer}>
@@ -84,7 +84,7 @@ function SearchBook(props: SearchBookProps) {
         </Button>
       </form>
     </div>
-  )
+  );
 }
 
-export default SearchBook
+export default SearchBook;

@@ -1,45 +1,45 @@
-import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
-import Button from '@material-ui/core/Button'
-import { useFormik } from 'formik'
-import * as Yup from 'yup'
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import Button from "@material-ui/core/Button";
+import { useFormik } from "formik";
+import * as Yup from "yup";
 
-import { useStyles } from '../hooks/useStyles'
-import api from '../api'
-import { User, ParamProps } from '../types'
+import { useStyles } from "../hooks/useStyles";
+import api from "../api";
+import { User, ParamProps } from "../types";
 
 function EditBook() {
-  const token: string = localStorage.jwtToken
+  const token: string = localStorage.jwtToken;
   //console.log(typeof token)
-  const { id } = useParams<ParamProps>()
-  const classes = useStyles()
-  const [user, setUser] = useState<User>()
+  const { id } = useParams<ParamProps>();
+  const classes = useStyles();
+  const [user, setUser] = useState<User>();
 
   const loadData = async () => {
     try {
-      const response = await api.getUserById(id)
-      setUser(response.data)
+      const response = await api.getUserById(id);
+      setUser(response.data);
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
 
   useEffect(() => {
-    loadData()
+    loadData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, []);
 
   const UserValidationSchema = Yup.object({
     firstName: Yup.string()
-      .max(15, 'Must be 15 characters or less')
-      .required('Required'),
+      .max(15, "Must be 15 characters or less")
+      .required("Required"),
     lastName: Yup.string()
-      .max(40, 'Must be 40 characters or less')
-      .required('Required'),
+      .max(40, "Must be 40 characters or less")
+      .required("Required"),
     email: Yup.string()
-      .max(2000, 'Must be 200 characters or less')
-      .required('Required'),
-  })
+      .max(2000, "Must be 200 characters or less")
+      .required("Required"),
+  });
 
   const formik = useFormik({
     initialValues: {
@@ -50,14 +50,13 @@ function EditBook() {
     enableReinitialize: true,
     validationSchema: UserValidationSchema,
     onSubmit: async (values) => {
-      alert(JSON.stringify(values, null, 2))
       try {
-        await api.updateUserById(user?._id, values, token)
+        await api.updateUserById(user?._id, values, token);
       } catch (err) {
-        console.log(err.message)
+        console.log(err.message);
       }
     },
-  })
+  });
 
   return (
     <>
@@ -124,10 +123,10 @@ function EditBook() {
           </div>
         </form>
       ) : (
-        <span style={{ marginTop: '80px' }}>loading...</span>
+        <span style={{ marginTop: "80px" }}>loading...</span>
       )}
     </>
-  )
+  );
 }
 
-export default EditBook
+export default EditBook;

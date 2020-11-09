@@ -14,6 +14,7 @@ import { AppState, Book, ParamProps, Product } from "../types";
 import api from "../api";
 import { useStyles } from "../hooks/useStyles";
 import { addProduct } from "../redux/actions";
+import bookImage from "../Images/book.jpg";
 
 export default function BookPage() {
   const { id } = useParams<ParamProps>();
@@ -64,7 +65,7 @@ export default function BookPage() {
         <CardActionArea>
           <CardMedia
             className={classes.media}
-            image={require("../Images/book.jpg")}
+            image={bookImage}
             title="book image"
           />
           <CardContent className={classes.bookCardContent}>

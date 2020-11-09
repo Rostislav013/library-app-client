@@ -10,7 +10,10 @@ export const registerUser = (userData: any, history: any) => (
 ) => {
   console.log("yoyoyoy");
   axios
-    .post("http://localhost:3001/api/v1/users/register", userData)
+    .post(
+      "https://rost-library-app.herokuapp.com/api/v1/users/register",
+      userData
+    )
     .then((res) => history.push("/login")) // re-direct to login on successful register  CHECK IF IT WORKS
     .catch((err) =>
       dispatch({
@@ -29,7 +32,7 @@ export type Decoded = {
 // Login - get user token
 export const loginUser = (userData: any) => (dispatch: any) => {
   axios
-    .post("http://localhost:3001/api/v1/users/login", userData)
+    .post("https://rost-library-app.herokuapp.com/api/v1/users/login", userData)
     .then((res) => {
       console.log(res);
       // Save to localStorage
