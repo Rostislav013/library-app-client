@@ -1,9 +1,9 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://rost-library-app.herokuapp.com/api/v1",
+  baseURL: "http://localhost:3001/api/v1",
 });
-
+// https://rost-library-app.herokuapp.com
 export const addBook = (payload: any) => api.post("/books", payload); //changed
 export const getAllBooks = () => api.get("/books");
 export const updateBookById = (bookId: any, payload: any) =>
@@ -13,7 +13,12 @@ export const getBookById = (bookId: any) => api.get(`/books/${bookId}`);
 export const searchBook = (path: string) => api.get(`/books/search?${path}`);
 
 export const addUser = (payload: any) => api.post("/users/register", payload); //changed
-export const getAllUsers = () => api.get("/users");
+export const getAllUsers = (token: string) =>
+  api.get("/users", {
+    headers: {
+      "auth-token": token,
+    },
+  });
 export const updateUserById = (userId: any, payload: any, token: string) =>
   api.put(`/users/${userId}`, payload, {
     headers: {

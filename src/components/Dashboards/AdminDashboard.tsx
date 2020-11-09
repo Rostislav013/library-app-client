@@ -61,7 +61,7 @@ function AdminDashboard() {
 
   const loadUsers = async () => {
     try {
-      const response = await api.getAllUsers();
+      const response = await api.getAllUsers(token);
       setData(response.data);
       const res = await api.getUserById(id);
       setUser(res.data);

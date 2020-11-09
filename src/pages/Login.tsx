@@ -1,65 +1,65 @@
-import React, { useEffect, useState } from 'react'
-import { useHistory } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
-import Avatar from '@material-ui/core/Avatar'
-import Button from '@material-ui/core/Button'
-import CssBaseline from '@material-ui/core/CssBaseline'
-import TextField from '@material-ui/core/TextField'
-import Link from '@material-ui/core/Link'
-import Grid from '@material-ui/core/Grid'
-import Box from '@material-ui/core/Box'
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
-import Typography from '@material-ui/core/Typography'
-import Container from '@material-ui/core/Container'
+import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import Avatar from "@material-ui/core/Avatar";
+import Button from "@material-ui/core/Button";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import TextField from "@material-ui/core/TextField";
+import Link from "@material-ui/core/Link";
+import Grid from "@material-ui/core/Grid";
+import Box from "@material-ui/core/Box";
+import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
+import Typography from "@material-ui/core/Typography";
+import Container from "@material-ui/core/Container";
 
-import { loginUser } from '../redux/actions/auth'
-import { AppState } from '../types'
-import { useStyles } from '../hooks/useStyles'
+import { loginUser } from "../redux/actions/auth";
+import { AppState } from "../types";
+import { useStyles } from "../hooks/useStyles";
 
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="http://localhost:3001/">
-        localhost:3001
-      </Link>{' '}
+      {"Copyright © "}
+      <Link color="inherit" href="https://rost-library-app.herokuapp.com">
+        web
+      </Link>{" "}
       {new Date().getFullYear()}
-      {'.'}
+      {"."}
     </Typography>
-  )
+  );
 }
 
 function Login() {
-  const classes = useStyles()
-  const dispatch = useDispatch()
-  const history = useHistory()
-  const user = useSelector((state: AppState) => state.auth)
-  const [password, setPassword] = useState('')
-  const [email, setEmail] = useState('')
+  const classes = useStyles();
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const user = useSelector((state: AppState) => state.auth);
+  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
 
   useEffect(() => {
     // If logged in and user navigates to Login page, should redirect them to dashboard
     if (user.isAuthenticated) {
-      history.push('/dashboard')
+      history.push("/dashboard");
     }
-  })
+  });
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
     const userData = {
       password: password,
       email: email,
-    }
-    dispatch(loginUser(userData))
-  }
+    };
+    dispatch(loginUser(userData));
+  };
 
   const handleChangeEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setEmail(e.target.value)
-  }
+    setEmail(e.target.value);
+  };
 
   const handleChangePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setPassword(e.target.value)
-  }
+    setPassword(e.target.value);
+  };
 
   return (
     <>
@@ -137,7 +137,7 @@ function Login() {
         </Box>
       </Container>
     </>
-  )
+  );
 }
 
-export default Login
+export default Login;
