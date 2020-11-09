@@ -1,6 +1,8 @@
 import axios from "axios";
 
-const api = axios.create({ baseURL: "http://localhost:3001/api/v1" });
+const api = axios.create({
+  baseURL: "https://rost-library-app.herokuapp.com/api/v1",
+});
 
 export const addBook = (payload: any) => api.post("/books", payload); //changed
 export const getAllBooks = () => api.get("/books");
