@@ -67,8 +67,13 @@ export default function BooksCard(props: BooksCardProps) {
           >
             More details
           </Button>
-          <Button size="small" color="primary" onClick={handleAddBook}>
-            Borrow this book
+          <Button
+            size="small"
+            color="primary"
+            variant="contained"
+            onClick={handleAddBook}
+          >
+            Borrow
           </Button>
         </CardActions>
       </Card>
