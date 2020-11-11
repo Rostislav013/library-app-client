@@ -20,6 +20,7 @@ function TableRows(props: BookTableRowProps) {
       setTitle(res.data.title);
       setAuthor(res.data.author);
     } catch (err) {
+      // FIX handle error
       console.log(err.message);
     }
   };

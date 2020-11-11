@@ -8,13 +8,12 @@ import setAuthToken from "../../utils/setAuthToken";
 export const registerUser = (userData: any, history: any) => (
   dispatch: (arg0: { type: string; payload: any }) => any
 ) => {
-  console.log("yoyoyoy");
   axios
     .post(
       "https://rost-library-app.herokuapp.com/api/v1/users/register",
       userData
     )
-    .then((res) => history.push("/login")) // re-direct to login on successful register  CHECK IF IT WORKS
+    .then((res) => history.push("/login"))
     .catch((err) =>
       dispatch({
         type: GET_ERRORS,

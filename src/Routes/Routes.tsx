@@ -10,7 +10,7 @@ import Register from "../pages/Register";
 import ShoppingCart from "../pages/ShoppingCart";
 import EditBook from "../pages/EditBook";
 import EditUser from "../pages/EditUser";
-
+import FormikLogin from "../pages/FormikLogin";
 const Routes = () => (
   <Switch>
     <Route exact path="/" component={Home} />
@@ -22,6 +22,7 @@ const Routes = () => (
     <Route exact path="/book/:id" component={EditBook} />
     <Route exact path="/users/:id" component={EditUser} />
     <Route exact path="/about" component={About} />
+    <Route exact path="/formiklogin" component={FormikLogin} />
   </Switch>
 );
 

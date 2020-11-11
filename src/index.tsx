@@ -7,7 +7,7 @@ import jwt_decode from "jwt-decode";
 import makeStore from "./redux/store";
 import setAuthToken from "./utils/setAuthToken";
 import { setCurrentUser, logoutUser } from "./redux/actions/auth";
-import { Decoded } from "./types";
+//import { Decoded } from "./types";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
@@ -45,7 +45,4 @@ const WithProvider = () => (
 
 ReactDOM.render(<WithProvider />, document.getElementById("root"));
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();

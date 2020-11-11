@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import { useFormik } from "formik";
@@ -6,18 +7,25 @@ import * as Yup from "yup";
 
 import { useStyles } from "../hooks/useStyles";
 import api from "../api";
-import { Book, ParamProps } from "../types";
+import { AppState, Book, ParamProps } from "../types";
 
 function EditBook() {
   const { id } = useParams<ParamProps>();
   const classes = useStyles();
   const [book, setBook] = useState<Book>();
 
+  const auth = useSelector((state: AppState) => state.auth);
+
+  // if (!auth.user.admin) {
+  //   return <Redirect to="/login" />;
+  // }
+
   const loadData = async () => {
     try {
       const response = await api.getBookById(id);
       setBook(response.data);
     } catch (error) {
+      //FIX handle error
       console.log(error);
     }
   };
@@ -68,10 +76,16 @@ function EditBook() {
     enableReinitialize: true,
     validationSchema: BookValidationSchema,
     onSubmit: async (values) => {
-      try {
-        await api.updateBookById(book?._id, values);
-      } catch (err) {
-        console.log(err.message);
+      if (auth.user.admin) {
+        try {
+          await api.updateBookById(book?._id, values);
+        } catch (err) {
+          //FIX handle error
+          console.log(err.message);
+        }
+      } else {
+        // FIX VERY IMPORTNAT
+        console.log("No right to EDIT");
       }
     },
   });

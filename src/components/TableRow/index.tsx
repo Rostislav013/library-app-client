@@ -12,11 +12,9 @@ import "./TableRows.css";
 function TableRows(props: TableRowProps) {
   const {
     id,
-    //admin,
     firstName,
     lastName,
     email,
-    //booksProperties,
     creationDate,
     handleDeleteUser,
   } = props;

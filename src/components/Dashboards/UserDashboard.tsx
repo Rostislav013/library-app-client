@@ -113,9 +113,9 @@ function UserDashboard() {
   const handleUpdateInfo = async (values: any) => {
     try {
       const res = await api.updateUserById(user?._id, values, token);
-      console.log(res);
       setUser(res.data);
     } catch (err) {
+      // FIX handle Error
       console.log(err.message);
     }
   };
@@ -126,6 +126,7 @@ function UserDashboard() {
     };
     try {
       const res = await api.updateUserById(user?._id, payload, token);
+      // FIX ADD COMFIRMATION ON THE PAGE
       if (res.status === 200) console.log("Password changed");
     } catch (err) {
       console.log(err.message);

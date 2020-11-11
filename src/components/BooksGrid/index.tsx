@@ -1,13 +1,13 @@
-import React from 'react'
-import Grid from '@material-ui/core/Grid'
+import React from "react";
+import Grid from "@material-ui/core/Grid";
 
-import { BooksGridProps } from '../../types'
-import BooksCard from '../BooksCard'
-import { useStyles } from '../../hooks/useStyles'
+import { BooksGridProps } from "../../types";
+import BooksCard from "../BooksCard";
+import { useStyles } from "../../hooks/useStyles";
 
-export default function BooksGrid(props: BooksGridProps) {
-  const { books } = props
-  const classes = useStyles()
+function BooksGrid(props: BooksGridProps) {
+  const { books } = props;
+  const classes = useStyles();
 
   return (
     <Grid container className={classes.bookGrid} spacing={2}>
@@ -31,5 +31,7 @@ export default function BooksGrid(props: BooksGridProps) {
         </Grid>
       </Grid>
     </Grid>
-  )
+  );
 }
+
+export default BooksGrid;

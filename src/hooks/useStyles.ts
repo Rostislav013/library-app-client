@@ -106,9 +106,11 @@ export const useStyles = makeStyles((theme: Theme) =>
       margin: theme.spacing(1),
       backgroundColor: theme.palette.secondary.main,
     },
+    // FIX CHECK IF NEEDED
     errMessage: {
-      textAlign: "center",
       color: "red",
+      padding: 0,
+      margin: 0,
     },
     form: {
       width: "100%", // Fix IE 11 issue.
@@ -147,7 +149,7 @@ export const useStyles = makeStyles((theme: Theme) =>
       alignContent: "flex-end !important",
       position: "absolute",
       bottom: 0,
-      // marginBottom: "5px",
+      marginBottom: "5px",
     },
 
     bookMedia: {

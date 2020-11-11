@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
-import Typography from "@material-ui/core/Typography";
-import AppBar from "@material-ui/core/AppBar";
 import { useSelector } from "react-redux";
+import AppBar from "@material-ui/core/AppBar";
+import Typography from "@material-ui/core/Typography";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Box from "@material-ui/core/Box";
@@ -43,16 +43,16 @@ function a11yProps(index: any) {
 
 function AdminDashboard() {
   const classes = useStyles();
-  const val = sessionStorage.getItem("tabIndex");
-  const init = val ? parseInt(val) : 0;
-  const [value, setValue] = useState(init);
-  const [users, setUsers] = useState<User[]>([]);
-  const [user, setUser] = useState<User>();
-  const [sortedBook, setSotedBook] = useState<any>();
+  const id = useSelector((state: AppState) => state.auth.user.id);
   const token: string = localStorage.jwtToken;
+  const sessionTabValue = sessionStorage.getItem("tabIndex");
+  const tabValue = sessionTabValue ? parseInt(sessionTabValue) : 0;
   const [data, setData] = useState<User[]>([]);
   const [keyword, setKeyword] = useState("");
-  const id = useSelector((state: AppState) => state.auth.user.id);
+  const [sortedBook, setSotedBook] = useState<any>();
+  const [value, setValue] = useState(tabValue);
+  const [users, setUsers] = useState<User[]>([]);
+  const [user, setUser] = useState<User>();
 
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
     setValue(newValue);
@@ -136,6 +136,7 @@ function AdminDashboard() {
             console.log(res);
             setUser(res.data);
           } catch (err) {
+            // FIX ndale error
             console.log(err.message);
           }
         }

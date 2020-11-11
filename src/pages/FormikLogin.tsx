@@ -11,6 +11,8 @@ import Box from "@material-ui/core/Box";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
+import { useFormik } from "formik";
+import * as Yup from "yup";
 
 import { loginUser } from "../redux/actions/auth";
 import { AppState } from "../types";
@@ -44,27 +46,33 @@ function Login() {
     }
   });
 
-  useEffect(() => {
-    user.loginError.email && setPassword("");
-  }, [user.loginError.email]);
+  const LoginValidationSchema = Yup.object({
+    email: Yup.string()
+      .email()
+      .max(40, "Must be 40 characters or less")
+      .required("Required"),
+    password: Yup.string()
+      .max(40, "Must be 40 characters or less")
+      .required("Required"),
+  });
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    const userData = {
-      password: password,
-      email: email,
-    };
-    dispatch(loginUser(userData));
-  };
+  // const formik = useFormik({
+  //   initialValues: {
+  //     email: "",
+  //     password: "",
+  //   },
 
-  const handleChangeEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setEmail(e.target.value);
-  };
+  //   validationSchema: LoginValidationSchema,
+  //   onSubmit: async (values) => {
+  //     alert(JSON.stringify(values, null, 2));
+  //     try {
+  //       await api.updateBookById(book?._id, values);
+  //     } catch (err) {
+  //       console.log(err.message);
+  //     }
+  //   },
+  // });
 
-  const handleChangePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setPassword(e.target.value);
-  };
-  console.log(user.loginError.email);
   return (
     <>
       <Link href="/">Back to home</Link>
@@ -77,36 +85,11 @@ function Login() {
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
-          <form className={classes.form} noValidate onSubmit={handleSubmit}>
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
-              autoFocus
-              value={email}
-              onChange={handleChangeEmail}
-            />
+          <form className={classes.form}>
             {user.loginError.email && (
               <p className={classes.errMessage}>{user.loginError.email}</p>
             )}
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-              value={password}
-              onChange={handleChangePassword}
-            />
+
             {user.loginError.password && (
               <p className={classes.errMessage}>{user.loginError.password}</p>
             )}

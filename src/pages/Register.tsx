@@ -1,64 +1,63 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { useHistory } from 'react-router-dom'
-import { useFormik } from 'formik'
-import * as Yup from 'yup'
-import Avatar from '@material-ui/core/Avatar'
-import Button from '@material-ui/core/Button'
-import Container from '@material-ui/core/Container'
-import CssBaseline from '@material-ui/core/CssBaseline'
-import TextField from '@material-ui/core/TextField'
-import Grid from '@material-ui/core/Grid'
-import Typography from '@material-ui/core/Typography'
-import Link from '@material-ui/core/Link'
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import Avatar from "@material-ui/core/Avatar";
+import Button from "@material-ui/core/Button";
+import Container from "@material-ui/core/Container";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import TextField from "@material-ui/core/TextField";
+import Grid from "@material-ui/core/Grid";
+import Typography from "@material-ui/core/Typography";
+import Link from "@material-ui/core/Link";
+import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 
-import { AppState } from '../types'
-import { registerUser } from '../redux/actions/auth'
-import { useStyles } from '../hooks/useStyles'
+import { AppState } from "../types";
+import { registerUser } from "../redux/actions/auth";
+import { useStyles } from "../hooks/useStyles";
 
 function Register() {
-  const auth = useSelector((state: AppState) => state.auth)
-  const history = useHistory()
-  const dispatch = useDispatch()
-  const classes = useStyles()
+  const auth = useSelector((state: AppState) => state.auth);
+  const history = useHistory();
+  const dispatch = useDispatch();
+  const classes = useStyles();
 
   useEffect(() => {
-    // If logged in and user navigates to Login page, should redirect them to dashboard
     if (auth.isAuthenticated) {
-      history.push('/dashboard')
+      history.push("/dashboard");
     }
-  })
+  });
 
   const NewUserValidationSchema = Yup.object({
     firstName: Yup.string()
-      .max(15, 'Must be 15 characters or less')
-      .required('Required'),
+      .max(15, "Must be 15 characters or less")
+      .required("Required"),
     lastName: Yup.string()
-      .max(40, 'Must be 40 characters or less')
-      .required('Required'),
+      .max(40, "Must be 40 characters or less")
+      .required("Required"),
     email: Yup.string()
-      .max(100, 'Must be 100 characters or less')
-      .required('Required'),
+      .max(100, "Must be 100 characters or less")
+      .required("Required"),
     password: Yup.string()
-      .max(40, 'Must be 40 characters or less')
-      .required('Required'),
+      .max(40, "Must be 40 characters or less")
+      .required("Required"),
     confirmPassword: Yup.string()
-      .oneOf([Yup.ref('password')], 'Passwords must match')
-      .required('Required'),
-  })
+      .oneOf([Yup.ref("password")], "Passwords must match")
+      .required("Required"),
+  });
 
   const formik = useFormik({
     initialValues: {
-      firstName: '',
-      lastName: '',
-      email: '',
-      password: '',
-      confirmPassword: '',
+      firstName: "",
+      lastName: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
     },
     validationSchema: NewUserValidationSchema,
     onSubmit: (values) => handleNewUser(values),
-  })
+  });
 
   const handleNewUser = (values: any) => {
     const newUser = {
@@ -66,9 +65,9 @@ function Register() {
       lastName: values.lastName,
       password: values.password,
       email: values.email,
-    }
-    dispatch(registerUser(newUser, history))
-  }
+    };
+    dispatch(registerUser(newUser, history));
+  };
 
   return (
     <Container component="main" maxWidth="xs">
@@ -171,7 +170,7 @@ function Register() {
         </form>
       </div>
     </Container>
-  )
+  );
 }
 
-export default Register
+export default Register;

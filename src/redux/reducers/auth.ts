@@ -1,19 +1,20 @@
-import { Auth, GET_ERRORS, SET_CURRENT_USER, USER_LOADING } from '../../types'
+import { Auth, GET_ERRORS, SET_CURRENT_USER, USER_LOADING } from "../../types";
 
-const isEmpty = require('is-empty')
+const isEmpty = require("is-empty");
 const initialState: Auth = {
   isAuthenticated: false,
   user: {
-    id: '',
-    email: '',
+    id: "",
+    email: "",
     exp: 0,
     admin: false,
-    firstName: '',
+    firstName: "",
   },
   loading: false,
   loginError: {},
-}
+};
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default function (state = initialState, action: any) {
   switch (action.type) {
     case SET_CURRENT_USER:
@@ -22,18 +23,18 @@ export default function (state = initialState, action: any) {
         isAuthenticated: !isEmpty(action.payload),
         user: action.payload,
         loginError: {},
-      }
+      };
     case USER_LOADING:
       return {
         ...state,
         loading: true,
-      }
+      };
     case GET_ERRORS:
       return {
         ...state,
         loginError: action.payload,
-      }
+      };
     default:
-      return state
+      return state;
   }
 }

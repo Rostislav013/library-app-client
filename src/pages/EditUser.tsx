@@ -10,7 +10,6 @@ import { User, ParamProps } from "../types";
 
 function EditBook() {
   const token: string = localStorage.jwtToken;
-  //console.log(typeof token)
   const { id } = useParams<ParamProps>();
   const classes = useStyles();
   const [user, setUser] = useState<User>();

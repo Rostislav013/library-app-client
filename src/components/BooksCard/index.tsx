@@ -15,7 +15,7 @@ import { useStyles } from "../../hooks/useStyles";
 import { addProduct } from "../../redux/actions";
 import bookImg from "../../Images/book.jpg";
 
-export default function BooksCard(props: BooksCardProps) {
+function BooksCard(props: BooksCardProps) {
   // FIX get bookID
   const { id, title, description, author } = props;
 
@@ -80,3 +80,5 @@ export default function BooksCard(props: BooksCardProps) {
     </Grid>
   );
 }
+
+export default BooksCard;
